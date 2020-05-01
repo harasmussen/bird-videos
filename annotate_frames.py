@@ -8,6 +8,7 @@ if len(sys.argv) != 3:
     print(f"Usage: {sys.argv[0]} [VideoFile] [Annontations]")
     sys.exit(1)
 
+# https://github.com/vmorariu/sequences
 
 input_video_path = sys.argv[1]
 annontation_path = sys.argv[2]

@@ -31,7 +31,7 @@ frame_rate = cap.get(cv2.CAP_PROP_FPS)
 frame_width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
 frame_height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
 
-end_frame = 500
+end_frame = 6000
 
 all_frames = []
 print(frame_count)
@@ -81,6 +81,7 @@ np.savez(model_path, **scene_pca_obj)
 
 print(frame_i, bad_frames)
 cap.release()
+
 
 # cv2.imwrite(f"output/mean.png", scene_pca.mean_.reshape(frame_height, frame_width))
 # for i, comp in enumerate(scene_pca.components_):

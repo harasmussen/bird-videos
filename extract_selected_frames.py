@@ -4,16 +4,26 @@ import sys
 import time
 import json
 import numpy as np
+import argparse
 
 
-if len(sys.argv) != 4:
-    print(f"Usage: {sys.argv[0]} [InVideoFile] [Annontations] [OutVideoFile] ")
-    sys.exit(1)
+ap = argparse.ArgumentParser()
+ap.add_argument('-i', '--input', required=True,
+                help = 'Path to input video')
+ap.add_argument('-o', '--output', required=True,
+                help = 'Path to output video')
+ap.add_argument('-a', '--annotations', required=True,
+                help = 'Path to annotation file')
+ap.add_argument('-n', '--nframes', required=False,
+                help = 'Number of frames to  extract')
+ap.add_argument('-v', '--inverse', required=False,
+                help = 'Extract negative frames')
+args = ap.parse_args()
 
 
-input_video_path = sys.argv[1]
-annontation_path = sys.argv[2]
-output_video_path = sys.argv[3]
+input_video_path = args.input
+annontation_path = args.sannotations
+output_video_path = args.output
 
 if not os.path.isfile(input_video_path):
     print(f"ERROR: {input_video_path} does not exists")

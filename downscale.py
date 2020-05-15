@@ -33,7 +33,7 @@ frame_i = 0
 bad_frames = 0
 while(frame_i < frame_count):
     if frame_i % 100 == 0:
-        print(f"{frame_i/frame_count*100}")
+        print(f"{frame_i/frame_count*100:f.2}%")
     good_frame, frame = cap.read()
     if not good_frame:
         frame = last_frame

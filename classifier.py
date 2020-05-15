@@ -2,7 +2,7 @@ import numpy as np
 import cv2
 import sys
 
-confidence_thr = 0.1
+confidence_thr = 0.0001
 
 
 CLASSES = ["background", "aeroplane", "bicycle", "bird", "boat",
@@ -23,8 +23,10 @@ net = cv2.dnn.readNetFromCaffe(mobile_net_dir+  'deploy.prototxt' , mobile_net_d
 # implementation)
 blob=None
 def applySSD(image):
+
     global blob
-    blob = cv2.dnn.blobFromImage(cv2.resize(image, (600, 300)), 0.007843, (300, 300), 127.5)
+    #blob = cv2.dnn.blobFromImage(cv2.resize(image, (600, 300)), 0.007843, (600, 300), 127.5)
+    blob = cv2.dnn.blobFromImage(image, 0.007843, image.shape[:2], 127.5)
 
     # pass the blob through the network and obtain the detections and
     # predictions
